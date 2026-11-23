@@ -1,3 +1,14 @@
-<main id="main-content" >
+{{#if this.isLoading}}
+  <div class="loading-top">
+    <p class="loading-text" aria-hidden="true">Loading...</p>
+    <div class="progress" role="progressbar" aria-label="Loading">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+{{/if}}
+
+<div class="sr-only" role="status">{{if this.isLoading "Loading"}}</div>
+
+<main id="main-content">
   {{outlet}}
 </main>

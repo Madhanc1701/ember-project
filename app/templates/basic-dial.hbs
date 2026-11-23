@@ -1,5 +1,6 @@
 <div class="phone phone--basic">
   <div class="basic-screen">
+    <LoadingBar/>
     <div class="bd-dial-screen {{if this.calling 'is-hidden'}}" id="dialScreen">
       <div class="top-bar">
         <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}}/>
