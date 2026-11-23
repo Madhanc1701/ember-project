@@ -1,0 +1,22 @@
+<div class="phone phone--smart" style={{container-style this.model.configs}}>
+  <div class="camera">
+    <img src="/images/camera.png" alt="camera">
+  </div>
+  <div class="app">
+    <div class="status-row status-row--lg">
+      <img src={{this.model.configs.os}} id="osIcon" alt="os" title={{this.userDetails.os}}>
+      <span id="numberDisplay">{{this.userDetails.mobileNumber}}</span>
+    </div>
+    <div class="apps apps--lg">
+      
+      <MobileApp @class="icon-btn icon-btn--lg" @id="phone" @ariaLabel="Phone" @onSelect={{action "goToApp" "dial"}} @src={{this.model.configs.dial}} />
+
+      <MobileApp @class="icon-btn icon-btn--lg" @id="message" @ariaLabel="Message" @onSelect={{action "goToApp" "message"}} @src={{this.model.configs.message}} />
+
+      <MobileApp @class="icon-btn icon-btn--lg" @id="mail" @ariaLabel="Mail" @onSelect={{action "goToApp" "mail"}} @src={{this.model.configs.mail}} />
+
+      <MobileApp @class="icon-btn icon-btn--lg" @id="socialmedia" @ariaLabel="Socialmedia" @onSelect={{action "goToApp" "socialMedia"}} @src={{this.model.configs.social}} />
+      
+    </div>
+  </div>
+</div>

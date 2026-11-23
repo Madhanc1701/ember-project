@@ -6,12 +6,8 @@ const browsers = [
   'last 1 Safari versions'
 ];
 
-const isCI = !!process.env.CI;
-const isProduction = process.env.EMBER_ENV === 'production';
-
-if (isCI || isProduction) {
-  browsers.push('ie 11');
-}
+// IE 11 support was removed on purpose: with ember-cli-babel 7.26 + ember-source 3.14 the
+// production build for IE 11 crashes at boot ("defineAccessor is not a function").
 
 module.exports = {
   browsers

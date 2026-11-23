@@ -1,0 +1,58 @@
+<div class="phone phone--smart" style={{container-style this.model.configs}}>
+  <div class="camera">
+    <img src="/images/camera.png" alt="camera">
+  </div>
+
+  <div class="app">
+    <div class="app-bar">
+      <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}} />
+      <h1>Email</h1>
+    </div>
+
+    <div class="list" id="inboxList">
+      {{#each this.mails as |mail|}}
+        <div class="list-item list-item--mail">
+          <div class="avatar avatar--sm">{{mail.initial}}</div>
+          <div class="item-text">
+            <div class="item-row">
+              <span class="item-title">To: {{mail.to}}</span>
+              <span class="item-time">Now</span>
+            </div>
+            <div class="item-subject">{{mail.subject}}</div>
+            <div class="item-snippet">{{mail.body}}</div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <button type="button" class="fab fab--mail" id="composeBtn" {{action "openCompose"}}>
+      <img id="fabIcon" src={{this.model.configs.mail}} alt="">
+      <span>Compose</span>
+    </button>
+
+    <div class="overlay {{unless this.composing 'is-hidden'}}" id="composeOverlay">
+      <div class="overlay-header">
+        <button type="button" class="overlay-close" id="closeCompose" aria-label="Close" {{action "closeCompose"}}>×</button>
+        <span>New email</span>
+        <button type="button" class="ml-send-btn" id="sendBtn" disabled={{this.sendDisabled}} aria-label="Send" {{action "sendMail"}}>➤</button>
+      </div>
+
+      <div>
+        <div class="field-row">
+          <label>From</label>
+          <input type="text" id="fromInput" disabled value={{this.userDetails.gmailAccount}}>
+        </div>
+        <div class="field-row">
+          <label for="toInput">To</label>
+          <input type="email" id="toInput" placeholder="Recipients" value={{this.to}} oninput={{action "updateTo"}}>
+        </div>
+        <div class="field-row">
+          <label for="subjectInput">Subject</label>
+          <input type="text" id="subjectInput" placeholder="Subject" value={{this.subject}} oninput={{action "updateSubject"}}>
+        </div>
+      </div>
+
+      <textarea class="ml-compose-body" id="bodyInput" placeholder="Compose email" value={{this.body}} oninput={{action "updateBody"}}></textarea>
+    </div>
+  </div>
+</div>

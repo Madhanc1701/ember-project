@@ -1,0 +1,16 @@
+{{!-- app/components/phone-keypad.hbs --}}
+<div class="phone-keypad">
+  <table>
+    <tbody>
+      <tr>
+        <td class="key-call" id="callBtn" role="button" onclick={{@onCall}}>📞</td>
+        <td class="key-nav">▲</td>
+        <td class="key-end" id="endBtn" role="button" onclick={{@onEnd}}>❌</td>
+      </tr>
+      <tr><td>1</td><td>2</td><td>3</td></tr>
+      <tr><td>4</td><td>5</td><td>6</td></tr>
+      <tr><td>7</td><td>8</td><td>9</td></tr>
+      <tr><td>*</td><td>0</td><td>#</td></tr>
+    </tbody>
+  </table>
+</div>

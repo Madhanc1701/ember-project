@@ -1,0 +1,16 @@
+<div class="phone phone--basic">
+  <div class="basic-screen">
+    <div class="status-row">
+      <img src={{if this.userDetails.isDual "/images/dual.png" "/images/single.png"}} alt="sim" id="simIcon">
+      <span id="numberDisplay">{{this.userDetails.displayNumber}}</span>
+    </div>
+    <div class="apps">
+      
+      <MobileApp @class="icon-btn" @id="dial" @ariaLabel="Phone" @onSelect={{action "goToApp" "dial"}} @src={{this.model.commons.dial}} /> 
+
+      <MobileApp @class="icon-btn" @id="message" @ariaLabel="Message" @onSelect={{action "goToApp" "message"}} @src={{this.model.commons.message}} />   
+
+    </div>
+  </div>
+  <PhoneKeypad />
+</div>

@@ -1,0 +1,53 @@
+<div class="phone phone--smart" style={{container-style this.model.configs}}>
+  <div class="camera">
+    <img src="/images/camera.png" alt="camera">
+  </div>
+
+  <div class="app">
+    <div class="app-bar">
+      <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}} />
+      <h1>Messages</h1>
+    </div>
+
+    <div class="list" id="conversationList">
+      {{#each this.conversations as |chat|}}
+        <div class="list-item">
+          <div class="avatar">{{chat.initials}}</div>
+          <div class="item-text">
+            <div class="item-row">
+              <span class="item-title">{{chat.number}}</span>
+              <span class="item-time">Now</span>
+            </div>
+            <div class="item-snippet">{{chat.text}}</div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <button type="button" class="fab fab--chat" id="startChatBtn" {{action "openNewChat"}}>
+      <img id="fabIcon" src={{this.model.configs.message}} alt="">
+      <span>Start chat</span>
+    </button>
+
+    <div class="overlay {{unless this.composing 'is-hidden'}}" id="newChatOverlay">
+      <div class="overlay-header">
+        <button type="button" class="overlay-close" id="closeNewChat" aria-label="Close" {{action "closeNewChat"}}>×</button>
+        <span>New message</span>
+      </div>
+
+      <div class="field-row field-row--to">
+        <label for="toNumberInput">To:</label>
+        <input type="tel" id="toNumberInput" inputmode="numeric" maxlength="10" placeholder="Enter mobile number" value={{this.toNumber}} oninput={{action "updateTo"}}>
+      </div>
+
+      <div class="ms-new-chat-body" id="newChatBody">
+        {{this.hint}}
+      </div>
+
+      <div class="ms-compose-area">
+        <input type="text" id="messageInput" placeholder="Text message" disabled={{this.messageDisabled}} value={{this.text}} oninput={{action "updateText"}} onkeydown={{action "onKeydown"}}>
+        <button type="button" id="sendBtn" disabled={{this.sendDisabled}} aria-label="Send" {{action "submit"}}>➤</button>
+      </div>
+    </div>
+  </div>
+</div>

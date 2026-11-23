@@ -1,0 +1,34 @@
+<div class="phone phone--smart" style={{container-style this.model.configs}}>
+  <div class="camera">
+    <img src="/images/camera.png" alt="">
+  </div>
+
+  <div class="app sd-dial-screen">
+    <div class="top-bar top-bar--flush">
+
+      <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}} />
+      
+    </div>
+
+    <div class="number-display number-display--lg">
+      <input type="tel" id="numberInput" aria-label="Phone number" inputmode="numeric" maxlength="10" placeholder="Enter number" autofocus value={{this.number}} oninput={{action "updateNumber"}} onkeydown={{action "onKeydown"}}>
+    </div>
+
+    <div class="sd-keypad" aria-hidden="true">
+      <table>
+        <tbody>
+          <tr><td>1<span class="sd-letters">&nbsp;</span></td><td>2<span class="sd-letters">ABC</span></td><td>3<span class="sd-letters">DEF</span></td></tr>
+          <tr><td>4<span class="sd-letters">GHI</span></td><td>5<span class="sd-letters">JKL</span></td><td>6<span class="sd-letters">MNO</span></td></tr>
+          <tr><td>7<span class="sd-letters">PQRS</span></td><td>8<span class="sd-letters">TUV</span></td><td>9<span class="sd-letters">WXYZ</span></td></tr>
+          <tr><td class="sd-symbol">*</td><td>0<span class="sd-letters">+</span></td><td class="sd-symbol">#</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sd-call-actions">
+      <button type="button" class="sd-call-btn" id="callBtn" aria-label="Call" {{action "call"}}>
+        <img id="callIcon" src={{this.model.commons.calling}} alt="">
+      </button>
+    </div>
+  </div>
+</div>

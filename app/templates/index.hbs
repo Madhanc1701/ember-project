@@ -1,0 +1,31 @@
+{{!-- {{page-title "Choose your phone"}}
+
+<div class="phone phone--short">
+  <div class="main">
+    <h1>Choose your phone</h1>
+    <div class="choice-list">
+
+      <LinkTo @route="basic-phone" @query={{hash simType="single"}} class="choice-btn" id="basicChoice">Basic Phone</LinkTo>
+      <LinkTo @route="smart" @query={{hash os="android"}} class="choice-btn" id="smartChoice">Smart Phone</LinkTo>
+      
+    </div>
+  </div>
+</div> --}}
+
+
+{{page-title "Choose your phone"}}
+
+<div class="phone phone--short">
+  <div class="main">
+    <h1 id="choose-heading">Choose your phone</h1>
+
+    <ul class="choice-list" role="list" aria-labelledby="choose-heading">
+      <li>
+        <LinkTo @route="basic-phone" @query={{hash simType="single"}} class="choice-btn" id="basicChoice">Basic Phone</LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="smart" @query={{hash os="android"}} class="choice-btn" id="smartChoice">Smart Phone</LinkTo>
+      </li>
+    </ul>
+  </div>
+</div>

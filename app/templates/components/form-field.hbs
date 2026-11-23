@@ -1,0 +1,21 @@
+<label for={{@id}}>{{@label}}</label>
+{{#if @hint}}
+  <span class="sr-only" id="{{@id}}Hint">{{@hint}}</span>
+{{/if}}
+<input
+  type={{if @type @type "text"}}
+  id={{@id}}
+  class="{{@class}} {{if @error "input-error"}} {{if @valid "input-valid"}}"
+  inputmode={{@inputmode}}
+  maxlength={{@maxlength}}
+  placeholder={{@placeholder}}
+  value={{@value}}
+  aria-invalid={{if @error "true"}}
+  aria-describedby="{{if @hint (concat @id "Hint")}} {{if @message (concat @id "Msg")}}"
+  oninput={{@onInput}}
+  onblur={{@onBlur}}
+>
+{{#if @onBlur}}
+  <span class="field-msg {{if @error "is-error"}} {{if @valid "is-valid"}}" id="{{@id}}Msg" aria-hidden="true">{{@message}}</span>
+  <span class="sr-only" aria-live="polite" aria-atomic="true">{{@announce}}</span>
+{{/if}}

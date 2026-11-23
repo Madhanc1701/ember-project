@@ -1,0 +1,108 @@
+{{!-- <div class="phone phone--short phone--form">
+  <div class="setup">
+    <h1>Smart Phone</h1>
+
+    <label tabindex="0">Operating system</label>
+    <div class="toggle">
+
+      <TypeButton id="androidBtn" @active={{this.isAndroid}} @onSelect={{action "selectOs" "android"}} @label="Android" />
+      
+      <TypeButton id="iosBtn" @active={{this.isIos}} @onSelect={{action "selectOs" "ios"}} @label="iOS" />
+      
+      <TypeButton id="windowsBtn" @active={{this.isWindows}} @onSelect={{action "selectOs" "windows"}} @label="Windows" />
+      
+
+    </div> --}}
+
+<div class="phone phone--short phone--form">
+  <div class="setup">
+    <h1>Smart Phone</h1>
+
+    <fieldset class="os-group">
+      <legend>Operating system</legend>
+      <div class="toggle">
+
+        <label class="os-option">
+          <input type="radio" name="os" id="androidBtn" value="android" checked={{this.isAndroid}} {{on "change" (action "selectOs" "android")}}>
+          <span class="type-btn">Android</span>
+        </label>
+
+        <label class="os-option">
+          <input type="radio" name="os" id="iosBtn" value="ios" checked={{this.isIos}} {{on "change" (action "selectOs" "ios")}}>
+          <span class="type-btn">iOS</span>
+        </label>
+
+        <label class="os-option">
+          <input type="radio" name="os" id="windowsBtn" value="windows" checked={{this.isWindows}} {{on "change" (action "selectOs" "windows")}}>
+          <span class="type-btn">Windows</span>
+        </label>
+
+      </div>
+    </fieldset>
+
+    <FormField
+      @id="numberInput"
+      @label="Mobile number"
+      @hint="10 digits, numbers only"
+      @type="text"
+      @placeholder="Enter mobile number"
+      @value={{this.mobileNumber}}
+      @message={{this.mobileState.text}}
+      @announce={{this.mobileAnnounce}}
+      @error={{this.mobileState.invalid}}
+      @valid={{this.mobileState.valid}}
+      @onInput={{action "updateNumber"}}
+      @onBlur={{action "touchNumber"}}
+    />
+
+    <FormField
+      @id="gmailInput"
+      @label="Gmail account"
+      @hint="Must end with @gmail.com"
+      @type="email"
+      @placeholder="yourname@gmail.com"
+      @value={{this.gmailAcc}}
+      @message={{this.gmailState.text}}
+      @announce={{this.gmailAnnounce}}
+      @error={{this.gmailState.invalid}}
+      @valid={{this.gmailState.valid}}
+      @onInput={{action "updateGmail"}}
+      @onBlur={{action "touchGmail"}}
+    />
+
+    {{#if this.isAndroid}}
+      <FormField
+        @id="instaInput"
+        @class="input-social"
+        @label="Instagram ID"
+        @placeholder="Enter insta username/id"
+        @value={{this.socialAcc}}
+        @onInput={{action "updateSocial"}}
+      />
+    {{/if}}
+
+    {{#if this.isIos}}
+      <FormField
+        @id="twitterInput"
+        @class="input-social"
+        @label="Twitter ID"
+        @placeholder="Enter twitter username/id"
+        @value={{this.socialAcc}}
+        @onInput={{action "updateSocial"}}
+      />
+    {{/if}}
+
+    {{#if this.isWindows}}
+      <FormField
+        @id="skypeInput"
+        @class="input-social"
+        @label="Skype ID"
+        @placeholder="Enter skype username/id"
+        @value={{this.socialAcc}}
+        @onInput={{action "updateSocial"}}
+      />
+    {{/if}}
+
+    <ContinueBtn @id="continueBtn" @onClick={{action "continue"}} />
+  </div>
+</div>

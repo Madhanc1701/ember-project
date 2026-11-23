@@ -1,0 +1,62 @@
+{{page-title "Basic Phone setup"}}
+
+<div class="phone phone--form">
+  <div class="setup">
+    <h1>Basic Phone</h1>
+
+    <fieldset class="os-group">
+      <legend>SIM type</legend>
+      <div class="toggle">
+
+        <label class="os-option">
+          <input type="radio" name="sim" id="singleBtn" value="single" checked={{this.isSingle}} {{on "change" (action "selectSim" "single")}}>
+          <span class="type-btn">Single SIM</span>
+        </label>
+
+        <label class="os-option">
+          <input type="radio" name="sim" id="dualBtn" value="dual" checked={{this.isDual}} {{on "change" (action "selectSim" "dual")}}>
+          <span class="type-btn">Dual SIM</span>
+        </label>
+
+      </div>
+    </fieldset>
+
+    <div class="sr-only" aria-live="polite">
+      {{#if this.isDual}}Second mobile number field is shown below.{{/if}}
+    </div>
+
+    <FormField
+      @id="numberInput"
+      @label="Mobile number"
+      @hint="10 digits, numbers only"
+      @type="text"
+      @placeholder="Enter mobile number"
+      @value={{this.mobileNumber}}
+      @message={{this.mobileState.text}}
+      @announce={{this.mobileAnnounce}}
+      @error={{this.mobileState.invalid}}
+      @valid={{this.mobileState.valid}}
+      @onInput={{action "updateNumber"}}
+      @onBlur={{action "touchNumber"}}
+    />
+
+    {{#if this.isDual}}
+      <FormField
+        @id="secondNumberInput"
+        @label="Second mobile number"
+        @hint="10 digits, numbers only, different from the first number"
+        @type="text"
+        @placeholder="Enter second mobile number"
+        @value={{this.secondMobileNumber}}
+        @message={{this.secondMobileState.text}}
+        @announce={{this.secondAnnounce}}
+        @error={{this.secondMobileState.invalid}}
+        @valid={{this.secondMobileState.valid}}
+        @onInput={{action "updateSecondNumber"}}
+        @onBlur={{action "touchSecondNumber"}}
+      />
+    {{/if}}
+
+    <ContinueBtn @id="continueBtn" @onClick={{action "continue"}} />
+  </div>
+</div>

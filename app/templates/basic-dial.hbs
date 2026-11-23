@@ -1,0 +1,41 @@
+<div class="phone phone--basic">
+  <div class="basic-screen">
+    <div class="bd-dial-screen {{if this.calling 'is-hidden'}}" id="dialScreen">
+      <div class="top-bar">
+        <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}}/>
+      </div>
+
+      <div class="number-display">
+        <input type="tel" id="numberInput" inputmode="numeric" maxlength="10" placeholder="Enter number" autofocus value={{this.number}} oninput={{action "updateNumber"}} onkeydown={{action "onKeydown"}}>
+      </div>
+    </div>
+
+    <div class="bd-calling-screen {{unless this.calling 'is-hidden'}}" id="callingScreen">
+      <div class="bd-caller-info">
+        <div class="bd-caller-number" id="callerNumber">{{this.callerNumber}}</div>
+        <div class="bd-call-sim" id="callSim">{{this.callSim}}</div>
+        <div class="bd-call-status" id="callStatus">{{this.callStatus}}</div>
+      </div>
+    </div>
+  </div>
+
+  <PhoneKeypad @onCall={{action "handleCall"}} @onEnd={{action "endCall"}} />
+
+  <div class="bd-sim-modal-backdrop {{unless this.showSimModal 'is-hidden'}}" id="simModal">
+    <div class="bd-sim-modal">
+      <h3>Call with</h3>
+
+      <button class="bd-sim-option" id="simOption1" {{action "chooseSim" "SIM 1"}}>
+        <img src={{this.model.configBasic.sim}} alt="">
+        SIM 1 (<span id="simOneNumber">{{this.userDetails.mobileNumber}}</span>)
+      </button>
+
+      <button class="bd-sim-option" id="simOption2" {{action "chooseSim" "SIM 2"}}>
+        <img src={{this.model.configBasic.sim}} alt="">
+        SIM 2 (<span id="simTwoNumber">{{this.userDetails.secondMobileNumber}}</span>)
+      </button>
+
+      <button class="bd-sim-cancel" id="simCancel" {{action "cancelSim"}}>Cancel</button>
+    </div>
+  </div>
+</div>

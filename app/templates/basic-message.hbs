@@ -1,0 +1,29 @@
+<div class="phone phone--basic">
+  <div class="basic-screen">
+    <div class="top-bar top-bar--titled">
+
+      <BackBtn @id="back" @onClick= {{action "goBack"}} @src={{this.model.commons.back}} />
+      
+      <span class="bm-title">Messages</span>
+    </div>
+
+    <div class="bm-message-list" id="messageList">
+      {{#each this.messages as |message|}}
+        <div class="bm-message-item"><span class="bm-to-number">To {{message.number}}:</span> {{message.text}}</div>
+      {{/each}}
+    </div>
+
+    <div class="bm-to-row">
+      <label for="toNumberInput">To:</label>
+      <input type="tel" id="toNumberInput" inputmode="numeric" maxlength="10" placeholder="Enter mobile number" value={{this.toNumber}} oninput={{action "updateTo"}}>
+    </div>
+
+    <div class="bm-compose-row">
+      <input type="text" id="messageInput" placeholder="Type a message" maxlength="120" disabled={{this.messageDisabled}} value={{this.text}} oninput={{action "updateText"}} onkeydown={{action "onKeydown"}}>
+      <button id="sendBtn" disabled={{this.sendDisabled}} {{action "submit"}}>Send</button>
+    </div>
+  </div>
+
+  <PhoneKeypad />
+
+</div>

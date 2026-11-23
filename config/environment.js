@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'mobile-ember',
+    // podModulePrefix: 'mobile-ember/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -20,6 +21,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    // the themes are served by Mirage, so keep it on in production builds too
+    'ember-cli-mirage': {
+      enabled: true
     }
   };
 
